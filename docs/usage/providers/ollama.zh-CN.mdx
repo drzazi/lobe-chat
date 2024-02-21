@@ -1,0 +1,65 @@
+# 在 LobeChat 中使用 Ollama
+
+![lobechat x ollama](https://github.com/lobehub/lobe-chat/assets/28616219/0dc1a490-62e1-4708-80d8-b6a5b82b6e8e)
+
+Ollama 是一款强大的本地运行大型语言模型（LLM）的框架，支持多种语言模型，包括 Llama 2, Mistral 等。现在，LobeChat 已经支持与 Ollama 的集成，这意味着你可以在 LobeChat 中轻松使用 Ollama 提供的语言模型来增强你的应用。本教程将指导你如何在 LobeChat 中集成和使用 Ollama。
+
+## 在本地安装 Ollama
+
+首先，你需要安装 Ollama，Ollama 支持 macOS、Windows 和 Linux 系统。
+
+根据你的操作系统，选择以下安装方式之一：
+
+### macOS
+
+[下载 Ollama for macOS](https://ollama.com/download) 并解压。
+
+### Windows (预览版)
+
+[下载 Ollama for Windows](https://ollama.com/download) 并安装。
+
+### Linux
+
+通过以下命令安装：
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+或者，你也可以参考 [Linux 手动安装指南](https://github.com/jmorganca/ollama/blob/main/docs/linux.md)。
+
+### Docker
+
+如果你更倾向于使用 Docker，Ollama 也提供了官方 Docker 镜像，你可以通过以下命令拉取：
+
+```bash
+docker pull ollama/ollama
+```
+
+## 安装本地模型
+
+在安装完成 Ollama 后，你可以通过以下命安装 Llama 2 模型：
+
+```bash
+ollama pull llama2
+```
+
+## 本地运行 LobeChat
+
+运行以下 Docker 命令行，启动 LobeChat：
+
+```bash
+docker run -d -p 3210:3210 -e OLLAMA_PROXY_URL=http://host.docker.internal:11434/v1 lobehub/lobe-chat
+```
+
+然后你就开始体验与本地 LLM 的对话了
+
+
+
+### 拉取模型（例如 Mistral）
+
+Ollama 支持多种模型，你可以在 [ollama.com/library](https://ollama.com/library) 中查看可用的模型列表，并根据需求选择合适的模型。例如，要拉取 Mistral 模型：
+
+```bash
+ollama pull mistral
+```
